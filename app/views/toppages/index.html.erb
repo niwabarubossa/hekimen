@@ -4,6 +4,20 @@
     <div class="col-md-12"></div>
   </div>
   
+<!--------------------------------------------------------->
+  
+  <% if logged_in? %>
+  <p>ログインできています　あなたのニックネームは　 <%= current_user.nickname %>　ですね。　</p>
+  <% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <p>ログインしていません。</p>
+    </div>
+  </div>
+  <% end %>
+
+<!--------------------------------------------------------->
+  
   <div class="row items">
     
     <!----------------------------------------------->
@@ -30,7 +44,7 @@
               <img src="" alt="商品画像" >
             </div>
             <div class="panel-body">
-              <p class="item-title">桃太郎　衣裳ほぼ未使用です！</p>
+              <p class="item-title">シンデレラの衣裳　ほぼ未使用です！</p>
             </div>
           </div>
         </div>
