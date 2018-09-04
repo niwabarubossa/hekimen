@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180902023113) do
+ActiveRecord::Schema.define(version: 20180903013726) do
+
+  create_table "productions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "production_title"
+    t.string   "production_picture"
+    t.string   "production_information"
+    t.string   "production_genre"
+    t.string   "production_season"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id"], name: "index_productions_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nickname"
@@ -23,4 +35,5 @@ ActiveRecord::Schema.define(version: 20180902023113) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "productions", "users"
 end

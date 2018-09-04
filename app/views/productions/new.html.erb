@@ -1,0 +1,30 @@
+<%= form_for(@production) do |f| %>
+        <div class="form-group">
+          <%= f.label :'制作物名' %>
+          <%= f.text_area :production_title, class: 'form-control', rows: 3 %>
+        </div>
+        
+        <div class="field form-group">
+          <%= f.label :'制作物の画像' %>
+          <%= f.file_field :production_picture, id: :production_picture %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :'制作物の説明' %>
+          <%= f.text_area :production_information, class: 'form-control', rows: 10 %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :'制作物ジャンル' %>
+          <%= f.text_area :production_genre, class: 'form-control', rows: 2 %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :'制作物の季節' %>
+          <%= f.text_area :production_season, class: 'form-control', rows: 2 %>
+        </div>
+        
+        <!--<div class="field">-->
+        
+        <%= f.submit '出品・制作物をシェアする', class: 'btn btn-primary btn-block' %>
+<% end %>

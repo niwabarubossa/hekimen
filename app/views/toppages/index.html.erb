@@ -20,105 +20,57 @@
   
   <div class="row items">
     
+    <!--ビューの共通化利用バージョン-->
+    <!--<= render 'productions/productions', microposts: @productions %>-->
+    
+    
+    <!------------------------------------------------------------------------------>
+     <% @productions.each do |production| %>
+    
+      <div class="item">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          
+          
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <!--<= production.production_picture %>-->
+              <%= image_tag(production.production_picture) if production.production_picture.present? %>
+              <!--<= image_tag(production.production_picture) %>-->
+            </div>
+            <div class="panel-body">
+              <p class="item-title production-title"> <%= production.production_title %> </p>
+            </div>
+          
+          </div>
+          
+          
+        </div>
+        
+        
+      </div>
+    <% end %>
+    <!------------------------------------------------------------------------------>
+    
+    
     <!----------------------------------------------->
+    <!--< @productions.each do |production| %>-->
     
-    
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">壁面７月用！　ほぼ未使用ですいかがでしょうか</p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!--  <div class="item">-->
+    <!--    <div class="col-md-3 col-sm-4 col-xs-12">-->
+    <!--      <div class="panel panel-default">-->
+    <!--        <div class="panel-heading text-center">-->
+    <!--          <img src="" alt="商品画像" >-->
+    <!--          <= image_tag(production.production_picture) %>-->
+    <!--        </div>-->
+    <!--        <div class="panel-body">-->
+    <!--          <p class="item-title"> <= production.production_title %> </p>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--    </div>-->
+    <!--  </div>-->
       
+    <!--< end %>-->
       
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">シンデレラの衣裳　ほぼ未使用です！</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">商品タイトル</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">商品タイトル</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">商品タイトル</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">商品タイトル</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      
-      
-      <div class="item">
-        <div class="col-md-3 col-sm-4 col-xs-12">
-          <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <img src="" alt="商品画像" >
-            </div>
-            <div class="panel-body">
-              <p class="item-title">商品タイトル</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    
 
     <!----------------------------------------------->
 

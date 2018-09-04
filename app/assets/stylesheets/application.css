@@ -41,3 +41,8 @@ p.item-title {
   overflow: hidden;
 }  
 
+.production-title{
+  font-size: 25px;
+  font-family: 'Arial',YuGothic,'Yu Gothic','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3','メイリオ', Meiryo,'ＭＳ ゴシック',sans-serif;
+}
+

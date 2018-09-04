@@ -12,8 +12,36 @@
   <div class="col-xs-8">
     <ul class="nav nav-tabs nav-justified">
       <li><a href="#">出品成果物一覧</a></li>
-      <!--<li><a href="#">Followings</a></li>-->
-      <!--<li><a href="#">Followers</a></li>-->
+
+      
+      <!------------------------------------------------------------------------------>
+      <% @productions.each do |production| %>
+    
+      <div class="item">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          
+          
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <!--<= production.production_picture %>-->
+              <%= image_tag(production.production_picture) if production.production_picture.present? %>
+              <!--<= image_tag(production.production_picture) %>-->
+            </div>
+            <div class="panel-body">
+              <p class="item-title production-title"> <%= production.production_title %> </p>
+            </div>
+          
+          </div>
+          
+          
+        </div>
+        
+        
+      </div>
+    <% end %>
+      <!------------------------------------------------------------------------------>
+
+
     </ul>
   </div>
 </div>
