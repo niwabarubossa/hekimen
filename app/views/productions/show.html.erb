@@ -1,2 +1,31 @@
-<h1>Productions#show</h1>
-<p>Find me in app/views/productions/show.html.erb</p>
+<div class="col-md-12 col-sm-12 col-xs-12">
+          
+          
+          <div class="panel panel-default">
+            
+            <div class="panel-body">
+              <p>商品タイトル</p>
+              <p class="item-title production-title production-params"><%=  @production_show.production_title %></p>
+            </div>
+            <div class="panel-heading text-center">
+              <p>商品画像</p>
+              <!--<= production.production_picture %>-->
+              <%= image_tag(@production_show.production_picture) if @production_show.production_picture.present? %>
+              <!--<= image_tag(production.production_picture) %>-->
+            </div>
+            <div class="panel-body">
+              <p>商品説明</p>
+              <p class="production"><%=  @production_show.production_information %></p>
+            </div>
+            <div class="panel-body">
+              <p>商品ジャンル</p>
+              <p class="production"><%=  @production_show.production_genre %></p>
+            </div>
+            <div class="panel-body">
+              <p>商品季節</p>
+              <p class="production"><%=  @production_show.production_season %></p>
+            </div>
+          
+          </div>
+          
+</div>

@@ -3,6 +3,7 @@ class ProductionsController < ApplicationController
   end
 
   def show
+    @production_show = Production.find(params[:id])
   end
 
   def new
