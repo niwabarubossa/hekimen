@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   
   resources :productions, only: [:show, :create, :destroy, :new]
   get 'create_productions', to: 'productions#create'
+  post 'send_comment', to: 'productions#aiueo'
   
+  resources :comments
 end

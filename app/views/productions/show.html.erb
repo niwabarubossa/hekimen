@@ -28,4 +28,30 @@
           
           </div>
           
+    <%= form_for(@production_comment, url:send_comment_path) do |f| %>
+        <div class="form-group">
+          <%= f.label :'コメント' %>
+          <!--< f.text_area :content, class: 'form-control', rows: 3 %>-->
+          
+          <%= f.hidden_field :production_id, :value => params[:id] %>
+        
+        <!--<div class="field">-->
+        
+         <% @display_comment.each do |comment| %>
+          <div class="panel-body">
+          <p class="production"><%= comment.user.nickname %>さん</p>
+          <p class="production"><%= comment.content %></p>
+          </div>
+        <% end %>
+        
+        <%= f.text_area :content, class: 'form-control', rows: 3 %>
+        
+        <%= f.submit 'コメントを投稿する', class: 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+      
+   
+    
+    
+          
 </div>
