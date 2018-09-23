@@ -62,3 +62,4 @@ group :production do
 end
 gem 'carrierwave'
 gem 'byebug'
+gem 'rmagick'
