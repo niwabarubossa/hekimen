@@ -1,4 +1,6 @@
 class ProductionsController < ApplicationController
+  before_action :require_user_logged_in,only: [:create,:new,:update,:buy]
+  
   def index
   end
 
@@ -16,7 +18,8 @@ class ProductionsController < ApplicationController
 
   def create
     @productions = Production.all
-    @production = current_user.productions.new(user_id: current_user.id,content: params[:content],production_id: current_production.id)
+    byebug
+    @production = current_user.productions.new(production_params)
     if @production.save
       flash[:success] = '制作物を出品しました。'
       # redirect_to 'productions/new'
@@ -32,9 +35,9 @@ class ProductionsController < ApplicationController
   def destroy
   end
  
- def update
+  def update
  
- end
+  end
   
   def save_comment
     # render　で　toppage/index　に飛ばした時用のproduction.all
@@ -77,9 +80,24 @@ class ProductionsController < ApplicationController
     end
   end
   
+  def buy
+    #購入者のid　売却者のidの処理をここに記述する
+    @production = Production.find(params[:id])
+    @production.status = false
+    if @production.save
+      flash[:success] = '購入に成功しました'
+      redirect_to :controller => "productions", :action => "transaction"
+    else 
+      flash[:success] = '購入に失敗しました'
+      redirect_to @production
+    end
+  end
+  
+  
   private
   
   def production_params
+    
     params.require(:production).permit(:production_title, :production_picture, :production_information, :production_genre, :production_season)
   end
   def comment_params

@@ -1,5 +1,10 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
           
+          <% if @production_show.status == true %>
+           <h1>これはまだ購入できます</h1>
+          <% else %>
+            <h1><strong>これはすでに購入されています</strong></h1>
+          <% end %>
           
           <div class="panel panel-default">
             
@@ -39,14 +44,18 @@
           <p class="production"><%= comment.content %></p>
           </div>
         <% end %>
+    
         
-        <%= f.text_area :content, class: 'form-control', rows: 3 %>
-        <%= f.submit 'コメントを投稿する', class: 'btn btn-primary btn-block' %>
+          <% if @production_show.status == true %>
+            <%= f.text_area :content, class: 'form-control', rows: 3 %>
+            <%= f.submit 'コメントを投稿する', class: 'btn btn-primary btn-block' %>
+          <% end %>
         </div>
     <% end %>
-      
-   
     
-    
-          
+    <% if @production_show.status == true %>
+    <%= link_to "購入する", {:controller => "productions", :action => "buy"},{class: 'btn btn-warning btn-block'} %>
+    <% end %>
+</div>
+        
 </div>

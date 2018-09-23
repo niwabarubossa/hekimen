@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :productions, only: [:show, :create, :destroy, :new]
   
   get 'productions/:id/transaction', to: 'productions#transaction'
+  get 'productions/:id/buy', to: 'productions#buy'
   
   get 'create_productions', to: 'productions#create'
   post 'send_comment', to: 'productions#save_comment'

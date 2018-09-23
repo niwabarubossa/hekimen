@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     @productions = Production.all
     
     @production_comment = current_user.comments.build(comment_params)
-    byebug
     if @production_comment.save
       flash[:success] = 'コメントを送信しました。'
       # redirect_to 'productions/new'

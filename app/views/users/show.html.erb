@@ -17,6 +17,8 @@
       <!------------------------------------------------------------------------------>
       <% @productions.each do |production| %>
     
+      <%= link_to production do %>
+    
       <div class="item">
         <div class="col-md-3 col-sm-4 col-xs-12">
           
@@ -35,6 +37,7 @@
           
           
         </div>
+        <% end %>
         
         
       </div>
