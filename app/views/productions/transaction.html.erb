@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+
+        <%= form_for(@production_comment, url:send_transaction_comment_path) do |f| %>
+          <div class="form-group">
+            <%= f.label :'コメント' %>
+            <%= f.hidden_field :production_id, :value => params[:id] %>
+            <%= f.hidden_field :transaction_comment, :value => true %>
+        
+            <% @transaction_display_comment.each do |comment| %>
+              <div class="panel-body">
+                <p class="production"><%= comment.user.nickname %>さん</p>
+                <p class="production"><%= comment.content %></p>
+              </div>
+            <% end %>
+        
+            <%= f.text_area :content, class: 'form-control', rows: 3 %>
+        
+        <%= f.submit '取引メッセージを送る', class: 'btn btn-primary btn-block' %>
+        </div>
+        <% end %>
+      
+
+            
+            <div class="panel-body">
+              <p>商品タイトル</p>
+              <p class="item-title production-title production-params"><%=  @production.production_title %></p>
+            </div>
+            <div class="panel-heading text-center">
+              <p>商品画像</p>
+              <!--<= production.production_picture %>-->
+              <%= image_tag(@production.production_picture) if @production.production_picture.present? %>
+              <!--<= image_tag(production.production_picture) %>-->
+            </div>
+            <div class="panel-body">
+              <p>商品説明</p>
+              <p class="production"><%=  @production.production_information %></p>
+            </div>
+            <div class="panel-body">
+              <p>商品ジャンル</p>
+              <p class="production"><%=  @production.production_genre %></p>
+            </div>
+            <div class="panel-body">
+              <p>商品季節</p>
+              <p class="production"><%=  @production.production_season %></p>
+            </div>
+          
+</div>

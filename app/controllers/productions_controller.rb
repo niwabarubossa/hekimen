@@ -4,13 +4,9 @@ class ProductionsController < ApplicationController
 
   def show
     @production_show = Production.find(params[:id])
-    
-    
-    @display_comment = Comment.where(production_id: params[:id]).all.order(created_at: "DESC")
+    @display_comment = Comment.where(production_id: params[:id]).where(transaction_comment: false).all.order(created_at: "DESC")
     # productionのidが欲しい
-    @production_comment = current_production.comments.new
-    
-    
+    @production_comment = current_user.comments.new
   end
 
   def new
@@ -40,7 +36,7 @@ class ProductionsController < ApplicationController
  
  end
   
-  def aiueo
+  def save_comment
     # render　で　toppage/index　に飛ばした時用のproduction.all
     
     @this_production = Production.find(comment_params[:production_id])
@@ -57,12 +53,36 @@ class ProductionsController < ApplicationController
     end
   end
   
+  def transaction
+    #取引画面の処理はここに書く
+    @production = Production.find(params[:id])
+    @production_comment = current_user.comments.new
+    @transaction_display_comment = Comment.where(production_id: params[:id]).where(transaction_comment: true).all.order(created_at: "DESC")
+  end
+  
+  def send_transaction_comment
+    # render　で　toppage/index　に飛ばした時用のproduction.all
+    
+    @this_production = Production.find(comment_params[:production_id])
+    # @productions = Production.all
+    @production_comment = current_user.comments.build(comment_params)
+    if @production_comment.save
+      flash[:success] = 'コメントを送信しました。'
+      puts('成功しました')
+      redirect_to :back
+    else
+      flash[:danger] = 'コメントの送信に失敗しました。'
+      puts('失敗しました')
+      redirect_to :back
+    end
+  end
+  
   private
   
   def production_params
     params.require(:production).permit(:production_title, :production_picture, :production_information, :production_genre, :production_season)
   end
   def comment_params
-    params.require(:comment).permit(:content,:production_id)
+    params.require(:comment).permit(:content,:production_id,:transaction_comment)
   end
 end
