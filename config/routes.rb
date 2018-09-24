@@ -6,12 +6,14 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :new, :create,:edit]
   
   resources :productions, only: [:show, :create, :destroy, :new]
   
   get 'productions/:id/transaction', to: 'productions#transaction'
   get 'productions/:id/buy', to: 'productions#buy'
+  
+  #gitのコミット用
   
   get 'create_productions', to: 'productions#create'
   post 'send_comment', to: 'productions#save_comment'
