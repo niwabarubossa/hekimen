@@ -27,11 +27,33 @@ class UsersController < ApplicationController
     end
   end
   
+  def edit
+    #@current_user　が使える
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_edit_params)
+      flash[:success] = '編集を保存しました。'
+      redirect_to @user
+    else
+      flash.now[:danger] = '編集の保存に失敗しました。'
+      redirect_to :back
+    end
+  end
+  
+  def save_user_edit
+  end
+  
   private
 
   def user_params
     params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
   end
   
+  def user_edit_params
+    params.require(:user).permit(:nickname, :email, :password,:realname,:postalcode,:address,:image)
+  end
   
 end
