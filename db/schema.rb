@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180923053016) do
+ActiveRecord::Schema.define(version: 20180924223137) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "content"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20180923053016) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.boolean  "status",                 default: true, null: false
+    t.integer  "buyer"
+    t.integer  "seller"
     t.index ["user_id"], name: "index_productions_on_user_id", using: :btree
   end
 

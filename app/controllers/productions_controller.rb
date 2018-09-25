@@ -18,7 +18,6 @@ class ProductionsController < ApplicationController
 
   def create
     @productions = Production.all
-    byebug
     @production = current_user.productions.new(production_params)
     if @production.save
       flash[:success] = '制作物を出品しました。'
@@ -59,6 +58,9 @@ class ProductionsController < ApplicationController
   def transaction
     #取引画面の処理はここに書く
     @production = Production.find(params[:id])
+    @seller = @production.user
+    @buyer = User.find(@production.buyer)
+  
     @production_comment = current_user.comments.new
     @transaction_display_comment = Comment.where(production_id: params[:id]).where(transaction_comment: true).all.order(created_at: "DESC")
   end
@@ -84,6 +86,8 @@ class ProductionsController < ApplicationController
     #購入者のid　売却者のidの処理をここに記述する
     @production = Production.find(params[:id])
     @production.status = false
+    @production.buyer = current_user.id
+    @production.seller = @production.user.id
     if @production.save
       flash[:success] = '購入に成功しました'
       redirect_to :controller => "productions", :action => "transaction"
@@ -97,10 +101,13 @@ class ProductionsController < ApplicationController
   private
   
   def production_params
-    
     params.require(:production).permit(:production_title, :production_picture, :production_information, :production_genre, :production_season)
   end
+  
   def comment_params
     params.require(:comment).permit(:content,:production_id,:transaction_comment)
+  end
+  
+  def transaction_params
   end
 end
